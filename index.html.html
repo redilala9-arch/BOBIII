@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Shop</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f3e5c8;color:#222;overflow-x:hidden}
+header{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:12px;background:#f3e5c8;border-bottom:1px solid #ddd;z-index:20}
+.left,.center,.right{display:flex;align-items:center}
+.burger{font-size:28px;background:none;border:none;cursor:pointer}
+.search{width:55vw;max-width:260px;padding:8px 12px;border-radius:20px;border:1px solid #aaa}
+.logo{font-weight:bold;cursor:pointer;padding:8px 10px;border-radius:10px;background:#fff}
+.sidebar{position:fixed;top:0;left:-260px;width:250px;height:100%;background:#c70000;color:#fff;padding:70px 20px 20px;transition:left .35s ease;z-index:30}
+.sidebar.open{left:0}
+.sidebar a{display:block;color:#fff;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;visibility:hidden;transition:.3s;z-index:25}
+.overlay.show{opacity:1;visibility:visible}
+main{padding:14px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:#fff;border-radius:18px;padding:10px;min-height:180px;box-shadow:0 4px 10px rgba(0,0,0,.08)}
+.img{height:100px;border-radius:14px;background:#eee;margin-bottom:10px}
+.price{font-weight:bold;margin-top:8px}
+.pages{display:flex;justify-content:center;gap:8px;padding:20px}
+.pages button{padding:8px 12px;border:none;border-radius:10px;background:#fff;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="sidebar" id="sidebar">
+<a href="#">Phones</a>
+<a href="#">Cases</a>
+<a href="#">Chargers</a>
+<a href="#">Headphones</a>
+<a href="#">Accessories</a>
+</div>
+<div class="overlay" id="overlay"></div>
+<header>
+<div class="left"><button class="burger" id="burger">☰</button></div>
+<div class="center"><input class="search" placeholder="Search products..."></div>
+<div class="right"><div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">LOGO</div></div>
+</header>
+<main>
+<div class="grid">
+<div class="card"><div class="img"></div><h4>Product 1</h4><div class="price">$99</div></div>
+<div class="card"><div class="img"></div><h4>Product 2</h4><div class="price">$129</div></div>
+<div class="card"><div class="img"></div><h4>Product 3</h4><div class="price">$59</div></div>
+<div class="card"><div class="img"></div><h4>Product 4</h4><div class="price">$149</div></div>
+<div class="card"><div class="img"></div><h4>Product 5</h4><div class="price">$39</div></div>
+<div class="card"><div class="img"></div><h4>Product 6</h4><div class="price">$79</div></div>
+</div>
+<div class="pages"><button>1</button><button>2</button><button>3</button></div>
+</main>
+<script>
+const burger=document.getElementById('burger');
+const sidebar=document.getElementById('sidebar');
+const overlay=document.getElementById('overlay');
+function closeMenu(){sidebar.classList.remove('open');overlay.classList.remove('show');}
+function openMenu(){sidebar.classList.add('open');overlay.classList.add('show');}
+burger.onclick=openMenu;overlay.onclick=closeMenu;
+</script>
+</body>
+</html>
